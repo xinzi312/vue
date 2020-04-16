@@ -1,0 +1,4 @@
+/* 改变图标的颜色 */
+.mytoast i{
+    color: palevioletred !important;
+}
