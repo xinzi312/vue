@@ -49,7 +49,17 @@ module.exports={
 
             {test: /\.scss$/,use:['style-loader','css-loader','sass-loader']},
 
-            {test: /\.(jpg|png|gif|jpeg)$/,use:'url-loader?limit=8834&name=[hash:8]-[name].[ext]'},//limit给定的值 是图片的大小 单位是byte，
+            {
+                test: /\.(jpg|jpeg|png|gif|svg)$/,
+                loader: "url-loader",
+                // limit:8834,
+                options: {
+                  esModule: false, // 默认值是 true，需要手动改成 false
+                  name: "[hash:8]-[name].[ext]"
+                }
+              },
+            //{test: /\.(jpg|png|gif|jpeg)$/,use:'url-loader?limit=8834&name=[hash:8]-[name].[ext]'},
+            //limit给定的值 是图片的大小 单位是byte，
             // 如果引用的图片大于或等于给定的limit值则不会转为base64格式的字符串，如果图片小于limit则会转为base64
             //name 设置图片被编译好的名称
             //[name].[ext]让图片保留原来的名称
